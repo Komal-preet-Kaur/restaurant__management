@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated SignUp Form</title>
+    <link rel="stylesheet" href="signup_style.css">
+</head>
+<body>
+    <div class="box">
+        <span class="boxLine"></span>
+        <form action="/register" method="POST">
+            <h2>Sign Up</h2>
+            <!-- Username -->
+            <div class="inputBox">
+                <input type="text" name="username" required>
+                <span>Username</span>
+                <i></i>
+            </div>
+            <!-- Password -->
+            <div class="inputBox">
+                <input type="password" name="password" required>
+                <span>Enter Password</span>
+                <i></i>
+            </div>
+            <!-- Email -->
+            <div class="inputBox">
+                <input type="email" name="email" required>
+                <span>Email Address</span>
+                <i></i>
+            </div>
+            <!-- Contact -->
+            <div class="inputBox">
+                <input type="tel" name="contact" required>
+                <span>Contact</span>
+                <i></i>
+            </div>
+            <!-- Gender -->
+            <div class="rBtn">
+                <label class="lbl">Gender :</label>
+                <div class="radio-wrapper">
+                    <input type="radio" name="gender" id="male" value="male" checked />
+                    <label for="male">Male</label>
+                </div>
+                <div class="radio-wrapper">
+                    <input type="radio" name="gender" id="female" value="female" />
+                    <label for="female">Female</label>
+                </div>
+            </div>
+            <!-- Submit Button -->
+            <input type="submit" value="Sign Up" >
+        </form>
+    </div>
+</body>
+</html>
