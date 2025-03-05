@@ -1,0 +1,15 @@
+[
+    {
+      "username": "abc",
+      "password": "$2a$10$V1.oJ9vZZQuH/jP3WwAf/.voKlU/nQqhhvnzYk4NxlcmnnJGIGDOm"
+    },
+    {
+      "username": "user1",
+      "password": "$2a$10$Aq4uEKyM8sFMYsYAY3I79uvOZtfjuy8FZ8cw5mpF8XfqdkXgXImty"
+    },
+    {
+      "username": "admin",
+      "password": "$2a$10$HLGm6Eo5YNx96mjLUWg1hu0dP3PSfnJ7J57BOV7m0ih3SOUlDDxui"
+    }
+  ]
+  
