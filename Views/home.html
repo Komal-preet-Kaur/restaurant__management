@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DineDelight</title>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="styles/homestyle.css">
 </head>
 <body>
 <!-- navbar -->
@@ -13,23 +13,24 @@
         <div class="navbar-container">
             <div class="navbar-logo">
                 <a href="#" class="logo">
-                    <img src="dinedelight logo.png" width="145" height="95" alt="Grilli - Home">
+                    <img src="images/dinedelight logo.png" width="145" height="95" alt="dinedelight">
                   </a>
             </div>
             <div class="navbar-left">
                 <ul>
-                    <li><a href="/home" class="nav-item">Home</a></li>
-                    <li><a href="#" class="nav-item">Explore Restaurants</a></li>
-                    <li><a href="#" class="nav-item">Contact Us</a></li>
-                    <li><a href="#" class="nav-item">About Us</a></li>
-                    <li><a href="#" class="nav-item">Bookings</a></li>
+                    <li><a href="/" class="nav-item">Home</a></li>
+                    
+                    <li><a href="/explore" class="nav-item">Explore Restaurants</a></li>
+                    <li><a href="/contact" class="nav-item">Contact Us</a></li>
+                    <li><a href="/about" class="nav-item">About Us</a></li>
+                    <li><a href="/bookings" class="nav-item">Bookings</a></li>
                 </ul>
             </div>
             <div class="navbar-right">
                 <div class="login-signup-box">
-                    <a href="#" class="nav-item">Login</a>
+                    <a href="/signin" class="nav-item">Login</a>
                     <span>/</span>
-                    <a href="#" class="nav-item">Signup</a>
+                    <a href="/signup" class="nav-item">Signup</a>
                 </div>
             </div>
         </div>
@@ -40,13 +41,13 @@
     <div class="slider">
         <div class="slides">
             <div class="slide">
-                <img src="new-res.avif" alt="Image 1">
+                <img src="images/new-res.avif" alt="Image 1">
             </div>
             <div class="slide">
-                <img src="location1.webp" alt="Image 2">
+                <img src="images/new-res2.avif" alt="Image 2">
             </div>
             <div class="slide">
-                <img src="new-res3.avif" alt="Image 3">
+                <img src="images/new-res3.avif" alt="Image 3">
             </div>
         </div>
 
@@ -55,7 +56,7 @@
             <div class="text-overlay">
                 <h1>Where every flavor tells a story</h1>
                 <p>Come with family & feel the joy of mouthwatering food</p><br>
-                <a href="#" class="explore-button">EXPLORE RESTAURANTS</a>
+                <a href="/explore" class="explore-button">EXPLORE RESTAURANTS</a>
             </div>
         </div>
 
@@ -106,26 +107,26 @@
     <div class="footer-container">
         <div class="footer-left">
             <div class="footer-logo">
-                <img src="dinedelight logo.png" alt="Delish Logo">
+                <img src="images/dinedelight logo.png " alt="Delish Logo">
                 <span>DineDelight</span>
             </div>
             <div class="footer-address">
                 <p>Lorem Ipsum is simply dummy text of the printing </p>
             </div>
             <div class="footer-social">
-                <a href="#"><img src="telegram.png" alt="Facebook"></a>
-                <a href="#"><img src="instagram.png" alt="Instagram"></a>
-                <a href="#"><img src="twitter.png" alt="Twitter"></a>
-                <a href="#"><img src="whatsapp.png" alt="LinkedIn"></a>
+                <img src="images/telegram.png" alt="Facebook">
+                <a href="#"><img src="images/instagram.png" alt="Instagram"></a>
+                <a href="#"><img src="images/twitter.png" alt="Twitter"></a>
+                <a href="#"><img src="images/whatsapp.png" alt="LinkedIn"></a>
             </div>
         </div>
         <div class="footer-links">
             <h3>LINKS</h3>
             <ul>
-                <li><a href="#"> About Us</a></li>
+                <li><a href="/about"> About Us</a></li>
                 <li><a href="#"> Meet our team</a></li>
-                <li><a href="#"> Privacy Poilicy</a></li>
-                <li><a href="#"> Contact</a></li>
+                <li><a href="/privacy"> Privacy Poilicy</a></li>
+                <li><a href="/contact"> Contact</a></li>
             </ul>
         </div>
         <div class="footer-menu">
@@ -144,7 +145,7 @@
             <div class="newsletter-form">
                 <input type="email" placeholder="Email Address">
                 <button>
-                    <img src="email.png" alt="Send">
+                    <img src="images/email.png" alt="Send">
                 </button>
             </div>
             <P>Contact Us : 9042788200<br>
@@ -152,6 +153,6 @@
         </div>
     </div>
 </footer>
-    <script src="script.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>
