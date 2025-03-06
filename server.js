@@ -34,7 +34,6 @@ app.get('/about', (req, res) => {
 app.get('/contact', (req, res) => {
   res.sendFile(path.join(__dirname, 'views', 'contactus.html')) // Serve the login page at root URL
 })
-
 app.use(express.static(path.join(__dirname, 'views')));
 // Import API routes from apiRoutes.js
 const apiRoutes = require('./api/apiRoutes') // Import the API routes for login and register functionality
