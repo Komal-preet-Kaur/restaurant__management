@@ -1,44 +1,65 @@
-const express = require('express') // Express for routing
-const path = require('path') // Path to handle file paths
-const fs = require('fs') // FS module for reading and writing files
-const router = express.Router() // Create an instance of Express Router
+const express = require('express'); // Express for routing
+const path = require('path'); // Path to handle file paths
+const fs = require('fs'); // FS module for reading and writing files
+const router = express.Router(); // Create an instance of Express Router
 
-// Login route
-router.post('/login', (req, res, next) => {
-  const { username, password } = req.body // Destructure username and password from the request body
+// GET route for Home page (you can adjust this route if needed)
+router.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '/home.html')); // Adjust path for home page
+});
+
+// GET route for Signin page
+router.get('/signin', (req, res) => {
+  res.sendFile(path.join(__dirname, '/sign-in.html')); // Adjust path for signin page
+});
+
+// POST route for Signin
+router.post('/signin', (req, res, next) => {
+  const { username, password } = req.body; // Destructure username and password from the request body
   // Read users data from the users.json file
   fs.readFile(path.join(__dirname, '../models/users.json'), 'utf-8', (err, data) => {
-    if (err) return next(err) // Pass any error to the error handling middleware
-    const users = JSON.parse(data) // Parse JSON data to get the user list
-    const user = users.find(u => u.username === username && u.password === password) // Find matching user
+    if (err) return next(err); // Pass any error to the error handling middleware
+    const users = JSON.parse(data); // Parse JSON data to get the user list
+    const user = users.find(u => u.username === username && u.password === password); // Find matching user
     if (user) {
       // If user exists, redirect to the dashboard
-      return res.status(302).redirect('/api/dashboard') // Redirect to dashboard.html
+      return res.status(302).redirect('/index.html'); // Redirect to dashboard.html
     } else {
       // If user doesn't exist, redirect to the register page
-      return res.status(302).redirect('/api/register') // Redirect to register.html
+      return res.status(302).redirect('/sign-in.html'); // Redirect to register.html
     }
-  })
-})
+  });
+});
 
-// Register route
-router.post('/register', (req, res, next) => {
-  const { username, password } = req.body // Destructure username and password
-  const newUser = { username, password } // Create a new user object
+// GET route for Signup page
+router.get('/signup', (req, res) => {
+  res.sendFile(path.join(__dirname, '../views/signup.html')); // Adjust path for signup page
+});
+
+// POST route for Signup
+router.post('/signup', (req, res, next) => {
+  const { username, password } = req.body; // Destructure username and password
+  const newUser = { username, password }; // Create a new user object
   // Read users data from the users.json file
   fs.readFile(path.join(__dirname, '../models/users.json'), 'utf-8', (err, data) => {
-    if (err) return next(err) // Pass any error to the error handling middleware
-    let users = []
+    if (err) return next(err); // Pass any error to the error handling middleware
+    let users = [];
     if (data) {
-      users = JSON.parse(data) // Parse existing user data
+      users = JSON.parse(data); // Parse existing user data
+      console.log(users);
     }
-    users.push(newUser) // Add the new user to the users array
+    users.push(newUser); // Add the new user to the users array
     // Write the updated users array back to the JSON file
     fs.writeFile(path.join(__dirname, '../models/users.json'), JSON.stringify(users, null, 2), (err) => {
-      if (err) return next(err) // Pass any error to the error handling middleware
-      res.status(302).redirect('/') // Redirect to login page after successful registration
-    })
-  })
-})
+      if (err) return next(err); // Pass any error to the error handling middleware
+      res.status(302).redirect('/sign-in.html'); // Redirect to login page after successful registration
+    });
+  });
+});
 
-module.exports = router // Export the router so it can be used in server.js
+// GET route for Dashboard (index page)
+router.get('/api/index', (req, res) => {
+  res.sendFile(path.join(__dirname, '../views/index.html')); // Adjust path for dashboard page
+});
+
+module.exports = router; // Export the router so it can be used in server.js
