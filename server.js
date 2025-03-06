@@ -12,9 +12,7 @@ app.use(express.urlencoded({ extended: true })) // To parse URL-encoded data
 app.use(logger) // Log each request
 // Serve static files (HTML, CSS, JS) from the /public directory
 app.use(express.static(path.join(__dirname, 'public')))
-// Import API routes from apiRoutes.js
-const apiRoutes = require('./api/apiRoutes') // Import the API routes for login and register functionality
-app.use('/api', apiRoutes) // Mount the API routes on /api path
+
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'views', 'home.html')) // Serve the login page at root URL
 })
@@ -36,6 +34,11 @@ app.get('/about', (req, res) => {
 app.get('/contact', (req, res) => {
   res.sendFile(path.join(__dirname, 'views', 'contactus.html')) // Serve the login page at root URL
 })
+
+app.use(express.static(path.join(__dirname, 'views')));
+// Import API routes from apiRoutes.js
+const apiRoutes = require('./api/apiRoutes') // Import the API routes for login and register functionality
+app.use('/api', apiRoutes) // Mount the API routes on /api path
 
 // Use error handler middleware for catching and handling errors
 app.use(errorHandler) // Handle errors globally
