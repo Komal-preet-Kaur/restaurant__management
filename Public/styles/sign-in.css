@@ -15,7 +15,7 @@ body
     align-items: center;
     min-height: 100vh;
     background: #23242a;
-    background-image: url('PIC3.jpg');
+    background-image: url('images/PIC3.jpg');
     background-size: cover; /* or 'contain' */ background-repeat: no-repeat; background-position: center; /* Center the image */
 }
 .box
