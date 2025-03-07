@@ -10,9 +10,9 @@
 <body>
     <div class="box">
         <div class="form">
-            <h2>Sign Up</h2>
+            <h2>Register</h2>
             <!-- Form that sends data to the /signin route -->
-            <form action="/api/signin" method="POST">
+            <form action="/api/signup" method="POST">
                 <!-- Username -->
                 <div class="inputBox">
                     <input type="text" name="username" required="required">
@@ -26,15 +26,10 @@
                     <i></i>
                 </div>
                 <!-- Submit Button -->
-                <input type="submit" value="Login">
+                <input type="submit" value="Register">
             </form>
 
-            <div class="links">
-                <!-- Link to Forgot Password (you should implement a route for this) -->
-                <a href="#">Forgot Password?</a>
-                <!-- Link to SignUp Page -->
-                <a href="/signup.html">Sign Up</a>
-            </div>
+            
         </div>
     </div>
 </body>
