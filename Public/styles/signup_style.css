@@ -6,100 +6,53 @@
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
-body {
-    min-height: 100vh;
-    margin: 0;
+
+
+body
+{
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
+    min-height: 100vh;
+    background: #23242a;
+    background-image: url('../images/bg-photo.jpg');
+    background-size: cover; /* or 'contain' */ background-repeat: no-repeat; background-position: center; /* Center the image */
 }
-
-body::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('images/bg-photo.jpg') no-repeat center center fixed;
-    background-size: 110% 100%; 
-    background-attachment: fixed; 
-    filter: blur(1px);
-    z-index: -1; /* Places the image behind all content */
-}
-
-
-
 .box
 {
     position: relative;
-    width: 390px;
-    height: 560px;
+    width: 370px;
+    height: 450px;
     background: #1c1c1c;
-    border-radius: 8px;
+    border-radius: 50px 5px;
     overflow: hidden;
 }
+
 .box::before
 {
     content: '';
     position: absolute;
     top: -50%;
     left: -50%;
-    width: 390px;
-    height: 490px;
-    background: linear-gradient(30deg,transparent,transparent,#e4c494,#e4c494,#e4c494);
+    width: 370px;
+    height: 450px;
+    background: linear-gradient(60deg,transparent,#c59246,#d9138a);
     transform-origin: bottom right;
     animation: animate 6s linear infinite;
-    z-index: 1;
 }
+
 .box::after
 {
     content: '';
     position: absolute;
     top: -50%;
     left: -50%;
-    width: 390px;
-    height: 490px;
-    background: linear-gradient(30deg,transparent,transparent,#e4c494,#e4c494,#e4c494);
+    width: 370px;
+    height: 450px;
+    background: linear-gradient(60deg,transparent,#c59246,#d9138a);
     transform-origin: bottom right;
     animation: animate 6s linear infinite;
     animation-delay: -3s;
-    z-index: 1;
-}
-.boxLine
-{
-    position: absolute;
-    top: 0;
-    inset: 0;
-}
-.boxLine::before
-{
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 390px;
-    height: 490px;
-    background: linear-gradient(30deg,transparent,transparent,#ff2770,#ff2770,#ff2770);
-    transform-origin: bottom right;
-    animation: animate 6s linear infinite;
-    animation-delay: -1.5s;
-    z-index: 1;
-}
-.boxLine::after
-{
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 390px;
-    height: 490px;
-    background: linear-gradient(30deg,transparent,transparent,#ff2770,#ff2770,#ff2770);
-    transform-origin: bottom right;
-    animation: animate 6s linear infinite;
-    animation-delay: -4.5s;
-    z-index: 1;
 }
 @keyframes animate
 {
@@ -112,30 +65,31 @@ body::before {
         transform: rotate(360deg);
     }
 }
-form
+
+.form
 {
     position: absolute;
     inset: 2px;
-    border-radius: 8px;
-    background: #161616;
-    padding: 20px 40px;
-    z-index: 2;
+    border-radius: 50px 5px;
+    background: #28292d;
+    z-index: 10;
+    padding: 30px 30px;
     display: flex;
     flex-direction: column;
 }
-h2
+
+.form h2
 {
     color: #e4c494;
-    font-size: 30px;
+    font-size: 35px;
     font-weight: 500;
     text-align: center;
-    letter-spacing: 0.1rem;
 }
 .inputBox
 {
     position: relative;
     width: 300px;
-    margin-top: 30px;
+    margin-top: 35px;
 }
 .inputBox input
 {
@@ -145,12 +99,27 @@ h2
     background: transparent;
     border: none;
     outline: none;
-    box-shadow: none;
     color: #23242a;
     font-size: 1em;
     letter-spacing: 0.05em;
-    transition: 0.5s;
     z-index: 10;
+}
+input[type="submit"]
+{
+    font-size: 20px;
+    border: none;
+    outline: none;
+    background: #e4c494;
+    padding: 5px;
+    margin-top: 40px;
+    border-radius: 90px;
+    font-weight: 600;
+    cursor: pointer;
+}
+input[type="submit"]:active
+{
+    background: linear-gradient(90deg,#e4c494,#d9138a);
+    opacity: 0.8;
 }
 .inputBox span
 {
@@ -158,7 +127,7 @@ h2
     left: 0;
     padding: 20px 10px 10px;
     font-size: 1em;
-    color: #8f8f8f;
+    color: #e4c494;
     pointer-events: none;
     letter-spacing: 0.05em;
     transition: 0.5s;
@@ -167,95 +136,41 @@ h2
 .inputBox input:focus ~ span
 {
     color: #e4c494;
+    transform: translateX(-10px) translateY(-34px);
     font-size: 0.75em;
-    transform: translateX(-10px) translateY(-35px);
 }
 .inputBox i
 {
     position: absolute;
     left: 0;
     bottom: 0;
-    background: #e4c494;
     width: 100%;
     height: 2px;
+    background: #e4c494;
     border-radius: 4px;
-    overflow: hidden;
     transition: 0.5s;
     pointer-events: none;
+    z-index: 9;
 }
 .inputBox input:valid ~ i,
 .inputBox input:focus ~ i
 {
     height: 44px;
 }
-.rBtn
+.links
 {
-    margin-top: 10px;
     display: flex;
-    align-items: center;
+    justify-content: space-between;
 }
-.lbl
+.links a
 {
-    font-size: 16px;
+    margin: 25px 0;
+    font-size: 1em;
     color: #8f8f8f;
+    text-decoration: none;
 }
-.radio-wrapper
+.links a:hover,
+.links a:nth-child(2)
 {
-    margin: 20px;
-}
-input[type="radio"]
-{
-    opacity: 0;
-}
-input[type="radio"] + label
-{
-    position: relative;
-    color: #8f8f8f;
-    cursor: pointer;
-}
-input[type="radio"] + label::before
-{
-    position: absolute;
-    content: '';
-    width: 18px;
-    height: 18px;
-    left: -24px;
-    top: 0;
-    border: 1px solid #6e6e6e;
-    border-radius: 50%;
-}
-input[type="radio"] + label::after
-{
-    position: absolute;
-    content: '';
-    width: 12px;
-    height: 12px;
-    left: -20px;
-    top: 4px;
-    border-radius: 50%;
-}
-input[type="radio"]:focus + label::before
-{
-    box-shadow: 0 0 0 2px #e4c494;
-}
-input[type="radio"]:checked + label::after
-{
-    background: #e4c494;
-}
-input[type="submit"]
-{
-    border: none;
-    outline: none;
-    background: #e4c494;
-    padding: 11px 25px;
-    font-size: 0.9em;
-    width: 100px;
-    margin-top: 10px;
-    border-radius: 4px;
-    font-weight: 600;
-    cursor: pointer;
-}
-input[type="submit"]:active
-{
-    opacity: 0.8;
+    color: #e4c494;
 }
