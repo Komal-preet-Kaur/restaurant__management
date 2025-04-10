@@ -46,5 +46,13 @@
   {
     "username": "komal",
     "password": "123"
+  },
+  {
+    "username": "abc",
+    "password": "abc"
+  },
+  {
+    "username": "gurkirat",
+    "password": "nonia"
   }
 ]

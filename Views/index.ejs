@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DineDelight</title>
+  <link rel="stylesheet" href="/styles/index.css" />
+</head>
+<body>
+
+  <!-- Include Navbar -->
+  <%- include('partials/navbar') %>
+
+  <hr />
+
+  <!-- Section 1 -->
+  <div class="slider">
+    <div class="slides">
+      <div class="slide"><img src="/images/new-res.avif" alt="Image 1" /></div>
+      <div class="slide"><img src="/images/new-res2.avif" alt="Image 2" /></div>
+      <div class="slide"><img src="/images/new-res3.avif" alt="Image 3" /></div>
+    </div>
+
+    <div class="image-container">
+      <div class="text-overlay">
+        <h1>Where every flavor tells a story</h1>
+        <p>Come with family & feel the joy of mouthwatering food</p><br />
+        <a href="/explore" class="explore-button">EXPLORE RESTAURANTS</a>
+      </div>
+    </div>
+
+    <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
+    <a class="next" onclick="changeSlide(1)">&#10095;</a>
+  </div>
+
+  <!-- Steps Section -->
+  <div class="container-steps-info">
+    <div class="steps-title"><h2>EASY ORDER IN 3 STEPS</h2></div>
+    <div class="steps-container">
+      <% const steps = [ 
+          { num: 1, img: 'step1image.avif', title: 'Register' }, 
+          { num: 2, img: 'step2image.avif', title: 'Explore Restaurants' }, 
+          { num: 3, img: 'step3image.avif', title: 'Book Table' } 
+      ]; %>
+
+      <% steps.forEach(step => { %>
+        <div class="step">
+          <div class="step-icon">
+            <div class="step-number"><%= step.num %></div>
+            <img src="/images/<%= step.img %>" alt="Step <%= step.num %> Icon" />
+          </div>
+          <h3><%= step.title %></h3>
+          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+
+  <br />
+
+  <!-- Section 2 -->
+  <section class="section">
+    <div class="container">
+      <h1>Flavors For Royalty</h1>
+      <h2>We Offer Top Notch</h2>
+
+      <ul class="grid-list">
+        <% const services = [
+            { title: 'Breakfast', img: 'service-1.jpg' },
+            { title: 'Appetizers', img: 'service-2.jpg' },
+            { title: 'Beverages', img: 'service-3.jpg' }
+        ]; %>
+
+        <% services.forEach(service => { %>
+          <li>
+            <div class="service-card">
+              <a href="#" class="has-before hover:shine">
+                <figure class="card-banner img-holder" style="--width: 285; --height: 336;">
+                  <img src="/images/<%= service.img %>" width="285" height="336" loading="lazy" alt="<%= service.title %>" class="img-cover" />
+                </figure>
+              </a>
+              <div class="card-content">
+                <h3 class="title-4 card-title"><%= service.title %></h3>
+              </div>
+            </div>
+          </li>
+        <% }) %>
+      </ul>
+
+      <p class="section-text">
+        Our restaurants offer a symphony of flavors, catering to every palate. Whether you're in the mood for the rich, <br />
+        comforting tastes of traditional cuisine or the bold, inventive flavors of contemporary dishes. Each restaurant in <br />
+        our group specializes in a unique culinary tradition, ensuring a diverse and exciting dining experience.
+      </p>
+    </div>
+  </section>
+
+  <hr />
+
+  <!-- Section 3 -->
+  <div class="story-container">
+    <div class="story-container-text">
+      <h1>Every Place Tells a Story</h1>
+      <p>
+        Take pride in creating exceptional dining experiences that bring people together. Our group of restaurants represents
+        the pinnacle of culinary excellence, offering a diverse array of flavors and atmospheres to delight every guest.
+      </p>
+    </div>
+    <div class="story-container-image">
+      <img src="/images/story-image.png" alt="Story Image" width="570" height="570" />
+    </div>
+  </div>
+
+  <hr />
+
+  <!-- Book Table Banner -->
+  <br /><br />
+  <div class="banner">
+    <img src="/images/location1.webp" alt="Coffee House Banner" />
+    <div class="banner-content">
+      <p class="banner-text">BOOK A TABLE FOR YOU AND FAMILY MEMBERS</p>
+      <h2 class="banner-title">NEED A TABLE ON COFFEE HOUSE</h2>
+      <a href="#" class="banner-button">BOOK A TABLE</a>
+    </div>
+  </div>
+
+  <!-- Include Footer -->
+  <%- include('partials/footer') %>
+
+  <script src="/js/script.js"></script>
+</body>
+</html>
