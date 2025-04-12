@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Restaurants</title>
+    <link rel="stylesheet" href="/public/styles/searchRest.css">
+</head>
+<body>
+    <h1> Search Restaurants in your area:</h1>
+    <div class="container">
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search for restaurants in a city...">
+            <button id="searchButton">Search</button>
+        </div>
+        <div class="results" id="resultsContainer">
+            <% if (restaurants && restaurants.length > 0) { %>
+                <% restaurants.forEach(restaurant => { %>
+                    <div class="restaurant">
+                        <h3><%= restaurant.name %></h3>
+                        <p><%= restaurant.city %></p>
+                        <p><%= restaurant.cuisine %></p>
+                    </div>
+                <% }); %>
+            <% } else { %>
+                <p>No restaurants found.</p>
+            <% } %>
+        </div>
+    </div>
+    <script src="/public/js/searchScript.js"></script>
+</body>
+</html>

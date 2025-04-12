@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Restaurants</title>
+    <link rel="stylesheet" href="/styles/exploreRes.css">
+</head>
+<body>
+  
+     <!-- Include Navbar -->
+ <%- include('partials/navbar') %>
+
+ <hr />
+
+    <div class="container-res">
+        <h1>Different Restaurants</h1>
+        <div class="restaurant-grid">
+            <div class="restaurant-card">
+                <img src="/images/new-res.avif" alt="Urban Cafe" loading="lazy">
+                <div class="restaurant-details">
+                    <h3>Urban Cafe</h3>
+                    <p>Address: Hyatt Regency, Sector 35, Chandigarh</p>
+                    <p>Cuisine: Chinese, Indian</p>
+                </div>
+            </div>
+            <div class="restaurant-card">
+                <img src="/images/location2.jpeg" alt="Piccante" loading="lazy">
+                <div class="restaurant-details">
+                    <h3>Piccante</h3>
+                    <p>Address: Sector 26, Chandigarh</p>
+                    <p>Cuisine: Italian, Chinese</p>
+                </div>
+            </div>
+            <div class="restaurant-card">
+                <img src="/images/location3.jpeg" alt="The Cafe @ JW">
+                <div class="restaurant-details">
+                    <h3>The Cafe @ JW</h3>
+                    <p>Address: JW Marriott Hotel, Sector 35, Chandigarh</p>
+                    <p>Cuisine: Indian, Cafe, International</p>
+                </div>
+            </div>
+            <div class="restaurant-card">
+                <img src="/images/location4.jpeg" alt="Baluchi">
+                <div class="restaurant-details">
+                    <h3>Baluchi</h3>
+                    <p>Address: Sector 26, Chandigarh</p>
+                    <p>Cuisine: Indian, Asian</p>
+                </div>
+            </div>
+            <div class="restaurant-card">
+                <img src="/images/location5.jpeg" alt="Virgin Courtyard">
+                <div class="restaurant-details">
+                    <h3>Virgin Courtyard</h3>
+                    <p>Address: Sector 7, Chandigarh</p>
+                    <p>Cuisine: Italian</p>
+                </div>
+            </div>
+            <div class="restaurant-card">
+                <img src="/images/location6.jpeg" alt="Tamra">
+                <div class="restaurant-details">
+                    <h3>Tamra</h3>
+                    <p>Address: Sector 7, Chandigarh</p>
+                    <p>Cuisine: Multicuisine</p>
+                </div>
+            </div>
+        </div>
+        <div class="dine-in-section">
+            <p>Dine In at your favorite place or book a table</p>
+            <button class="dine-in-button">DINE IN</button>
+        </div>
+    </div>
+
+     <!-- Include Footer -->
+ <%- include('partials/footer') %>
+
+</body>
+</html>
