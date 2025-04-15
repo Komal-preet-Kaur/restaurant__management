@@ -3,14 +3,65 @@ const path = require('path')
 const fs = require('fs')
 const router = express.Router()
 
-// Home route
+// Home route (updated to render 'index' instead of 'home')
 router.get('/', (req, res) => {
-  res.render('home') // Render EJS template instead of sending an HTML file
+  res.render('home', {
+    title: 'DineDelight',
+    heading: 'Where every flavor tells a story',
+    subheading: 'Come with family & feel the joy of mouthwatering food',
+    steps: [
+      {
+        title: 'Register',
+        image: '/images/step1image.avif',
+        description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
+      },
+      {
+        title: 'Explore Restaurants',
+        image: '/images/step2image.avif',
+        description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
+      },
+      {
+        title: 'Book Table',
+        image: '/images/step3image.avif',
+        description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
+      }
+    ],
+    showAuthLinks : false
+  })
 })
+
 
 // Sign-in route (GET)
 router.get('/signin', (req, res) => {
-  res.render('sign-in') // Render EJS template for the sign-in page
+  res.render('sign-in',) // Render EJS template for the sign-in page
+})
+
+// About us route
+router.get('/about', (req, res) => {
+  res.render('aboutus',{
+    showAuthLinks : false
+  })
+})
+
+// Contact us route
+router.get('/contact', (req, res) => {
+  res.render('contactus',{
+    showAuthLinks : false
+  })
+})
+
+// Privacy policy route
+router.get('/privacy', (req, res) => {
+  res.render('privacypolicy',{
+    showAuthLinks : false
+  })
+})
+
+// Explore route
+router.get('/explore', (req, res) => {
+  res.render('exploreRest',{
+    showAuthLinks : false
+  }) // Make sure 'exploreRest.ejs' exists
 })
 
 // Sign-in route (POST)
@@ -52,9 +103,31 @@ router.post('/signup', (req, res, next) => {
   })
 })
 
-// Index route (GET)
-router.get('/api/index', (req, res) => {
-  res.render('index') // Render EJS template for the index page
+// Index route
+router.get('/index', (req, res) => {
+  res.render('index', {
+    title: 'DineDelight',
+    heading: 'Where every flavor tells a story',
+    subheading: 'Come with family & feel the joy of mouthwatering food',
+    steps: [
+      {
+        title: 'Register',
+        image: '/images/step1image.avif',
+        description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
+      },
+      {
+        title: 'Explore Restaurants',
+        image: '/images/step2image.avif',
+        description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
+      },
+      {
+        title: 'Book Table',
+        image: '/images/step3image.avif',
+        description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
+      }
+    ],
+    showAuthLinks : true,
+  },)
 })
 
 module.exports = router
