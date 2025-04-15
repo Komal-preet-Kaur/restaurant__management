@@ -3,7 +3,6 @@ const path = require('path')
 const fs = require('fs')
 const router = express.Router()
 
-// Home route (updated to render 'index' instead of 'home')
 router.get('/', (req, res) => {
   res.render('home', {
     title: 'DineDelight',
@@ -33,7 +32,7 @@ router.get('/', (req, res) => {
 
 // Sign-in route (GET)
 router.get('/signin', (req, res) => {
-  res.render('sign-in',) // Render EJS template for the sign-in page
+  res.render('sign-in',) 
 })
 
 // About us route
@@ -73,16 +72,16 @@ router.post('/signin', (req, res, next) => {
     const user = users.find(u => u.username === username && u.password === password)
     if (user) {
       // Redirecting to EJS page
-      return res.status(302).redirect('/index') // Use '/index' route (without the .html extension)
+      return res.status(302).redirect('/index') 
     } else {
-      return res.status(302).redirect('/signin') // Use '/signin' route (without the .html extension)
+      return res.status(302).redirect('/signin') 
     }
   })
 })
 
 // Sign-up route (GET)
 router.get('/signup', (req, res) => {
-  res.render('signup') // Render EJS template for the signup page
+  res.render('signup') 
 })
 
 // Sign-up route (POST)
