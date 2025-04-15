@@ -12,11 +12,11 @@ const PORT = 8080
 const logger = require('./middlewares/logger')
 const errorHandler = require('./middlewares/errorHandler')
 
-// Set view engine to EJS
+
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, 'views'))
 
-// Middleware
+
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(logger)
@@ -26,10 +26,9 @@ app.use(compression())
 app.use(morgan('dev'))
 app.use(cookieParser())
 
-// Serve static files (like css, js, images) from 'public' folder
+
 app.use(express.static(path.join(__dirname, 'public')))
 
-// Routes using EJS
 
 // Home route
 app.get('/', (req, res) => {
@@ -105,7 +104,7 @@ app.use((req, res, next) => {
 // Error handler middleware
 app.use(errorHandler)
 
-// Start the server
+
 app.listen(PORT, () => {
   console.log(`Server is running at http://localhost:${PORT}`)
 })
