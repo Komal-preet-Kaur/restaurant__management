@@ -25,7 +25,7 @@ router.get('/', (req, res) => {
         description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
       }
     ],
-    showAuthLinks : false
+    showAuthLinks : true
   })
 })
 
@@ -74,7 +74,7 @@ router.post('/signin', (req, res, next) => {
       // Redirecting to EJS page
       return res.status(302).redirect('/index') 
     } else {
-      return res.status(302).redirect('/signin') 
+      return res.status(302).redirect('/signup') 
     }
   })
 })
@@ -86,21 +86,39 @@ router.get('/signup', (req, res) => {
 
 // Sign-up route (POST)
 router.post('/signup', (req, res, next) => {
-  const { username, password } = req.body
-  const newUser = { username, password }
-  fs.readFile(path.join(__dirname, '../models/users.json'), 'utf-8', (err, data) => {
-    if (err) return next(err)
-    let users = []
-    if (data) {
-      users = JSON.parse(data)
+  const { username, password } = req.body;
+  console.log("Received signup request:", username, password);
+
+  const newUser = { username, password };
+  const userFilePath = path.join(__dirname, '../models/users.json');
+
+  fs.readFile(userFilePath, 'utf-8', (err, data) => {
+    if (err) {
+      console.error("Error reading users.json:", err);
+      return next(err);
     }
-    users.push(newUser)
-    fs.writeFile(path.join(__dirname, '../models/users.json'), JSON.stringify(users, null, 2), (err) => {
-      if (err) return next(err)
-      res.status(302).redirect('/signin') // Redirect to EJS sign-in page
-    })
-  })
-})
+
+    let users = [];
+    try {
+      if (data) users = JSON.parse(data);
+    } catch (parseErr) {
+      console.error("Error parsing users.json:", parseErr);
+      return next(parseErr);
+    }
+
+    users.push(newUser);
+
+    fs.writeFile(userFilePath, JSON.stringify(users, null, 2), (err) => {
+      if (err) {
+        console.error("Error writing to users.json:", err);
+        return next(err);
+      }
+      console.log("User saved successfully:", newUser);
+      res.redirect('/signin');
+    });
+  });
+});
+
 
 // Index route
 router.get('/index', (req, res) => {
@@ -125,7 +143,7 @@ router.get('/index', (req, res) => {
         description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
       }
     ],
-    showAuthLinks : true,
+    showAuthLinks : false,
   },)
 })
 
