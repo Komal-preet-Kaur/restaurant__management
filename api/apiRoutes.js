@@ -3,6 +3,7 @@ const path = require('path')
 const fs = require('fs')
 const router = express.Router()
 const Reservation = require('../models/reservation')
+const User = require('../models/User')
 
 router.get('/', (req, res) => {
   res.render('home', {
@@ -64,19 +65,22 @@ router.get('/explore', (req, res) => {
 })
 
 // Sign-in route (POST)
-router.post('/signin', (req, res, next) => {
-  const { username, password } = req.body
-  fs.readFile(path.join(__dirname, '../models/users.json'), 'utf-8', (err, data) => {
-    if (err) return next(err)
-    const users = JSON.parse(data)
-    const user = users.find(u => u.username === username && u.password === password)
-    if (user) {
-      // Redirecting to EJS page
-      return res.status(302).redirect('/index') 
-    } else {
-      return res.status(302).redirect('/signup') 
+router.post('/signin', async (req, res, next) => {
+  try {
+    const { username, password } = req.body
+    const user = await User.findOne({ username })
+    if (!user) {
+      return res.status(302).redirect('/signup')
     }
-  })
+    const isMatch = await user.comparePassword(password)
+    if (isMatch) {
+      return res.status(302).redirect('/index')
+    } else {
+      return res.status(302).redirect('/signin')
+    }
+  } catch (err) {
+    next(err)
+  }
 })
 
 // Sign-up route (GET)
@@ -85,40 +89,21 @@ router.get('/signup', (req, res) => {
 })
 
 // Sign-up route (POST)
-router.post('/signup', (req, res, next) => {
-  const { username, password } = req.body;
-  console.log("Received signup request:", username, password);
-
-  const newUser = { username, password };
-  const userFilePath = path.join(__dirname, '../models/users.json');
-
-  fs.readFile(userFilePath, 'utf-8', (err, data) => {
-    if (err) {
-      console.error("Error reading users.json:", err);
-      return next(err);
+router.post('/signup', async (req, res, next) => {
+  try {
+    const { username, password } = req.body
+    const existingUser = await User.findOne({ username })
+    if (existingUser) {
+      // User already exists, redirect to signup with error or handle accordingly
+      return res.status(302).redirect('/signup')
     }
-
-    let users = [];
-    try {
-      if (data) users = JSON.parse(data);
-    } catch (parseErr) {
-      console.error("Error parsing users.json:", parseErr);
-      return next(parseErr);
-    }
-
-    users.push(newUser);
-
-    fs.writeFile(userFilePath, JSON.stringify(users, null, 2), (err) => {
-      if (err) {
-        console.error("Error writing to users.json:", err);
-        return next(err);
-      }
-      console.log("User saved successfully:", newUser);
-      res.redirect('/signin');
-    });
-  });
+    const newUser = new User({ username, password })
+    await newUser.save()
+    res.redirect('/signin')
+  } catch (err) {
+    next(err)
+  }
 })
-
 // Index route
 router.get('/index', (req, res) => {
   res.render('index', {
@@ -175,6 +160,73 @@ router.post('/reserve/:restaurantId', async (req, res) => {
     console.error('Reservation error:', error);
     res.status(500).send('Failed to reserve. Please try again.');
   }
+});
+// Add this above module.exports
+
+// Hardcoded restaurant data for search API
+const restaurants = [
+  {
+    id: 1,
+    name: 'Urban Cafe',
+    address: 'Hyatt Regency, Sector 35, Chandigarh',
+    cuisine: 'Chinese, Indian',
+    lat: 30.7333,
+    lng: 76.7794
+  },
+  {
+    id: 2,
+    name: 'Piccante',
+    address: 'Sector 26, Chandigarh',
+    cuisine: 'Italian, Chinese',
+    lat: 30.7415,
+    lng: 76.7680
+  },
+  {
+    id: 3,
+    name: 'The Cafe @ JW',
+    address: 'JW Marriott Hotel, Sector 35, Chandigarh',
+    cuisine: 'Indian, Cafe, International',
+    lat: 30.7339,
+    lng: 76.7790
+  },
+  {
+    id: 4,
+    name: 'Baluchi',
+    address: 'Sector 26, Chandigarh',
+    cuisine: 'Indian, Asian',
+    lat: 30.7410,
+    lng: 76.7675
+  },
+  {
+    id: 5,
+    name: 'Virgin Courtyard',
+    address: 'Sector 7, Chandigarh',
+    cuisine: 'Italian',
+    lat: 30.7350,
+    lng: 76.7800
+  },
+  {
+    id: 6,
+    name: 'Tamra',
+    address: 'Sector 7, Chandigarh',
+    cuisine: 'Multicuisine',
+    lat: 30.7355,
+    lng: 76.7805
+  }
+];
+
+// API route for restaurant search
+router.get('/api/restaurants/search', (req, res) => {
+  const query = req.query.query ? req.query.query.toLowerCase() : '';
+  if (!query) {
+    return res.json({ results: [] });
+  }
+  const results = restaurants.filter(r =>
+    r.name.toLowerCase().includes(query) ||
+    r.address.toLowerCase().includes(query) ||
+    r.cuisine.toLowerCase().includes(query)
+  );
+  res.json({ results });
 });
 
 module.exports = router
