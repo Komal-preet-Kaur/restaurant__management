@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table Reservation</title>
+    <link rel="stylesheet" href="/styles/index.css">
+    <link rel="stylesheet" href="/styles/reservation.css">
+</head>
+<body>
+
+ 
+  <!-- Include Navbar -->
+  <%- include('includes/navbar', { showAuthLinks: false }) %>
+
+  <hr />
+
+  <main>
+  <main>
+    <form action="/reserve/sample-restaurant" method="POST" class="reservation-form">
+        <div class="form-header">
+            <h2>RESERVE YOUR TABLE NOW</h2>
+        </div>
+        <div class="form-group">
+            <div>
+                <label for="username"><i class="icon">👤</i> Username</label>
+                <input type="text" id="username" name="name" placeholder="Your Username" required>
+            </div>
+            <div>
+                <label for="email"><i class="icon">✉️</i> Email</label>
+                <input type="email" id="email" name="email" placeholder="Your Email" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <div>
+                <label for="phone"><i class="icon">📞</i> Phone</label>
+                <input type="tel" id="phone" name="phone" placeholder="Your Phone Number" required>
+            </div>
+            <div>
+                <label for="guests"><i class="icon">👥</i> Guests</label>
+                <select id="guests" name="guests" required>
+                    <option value="1">1 person</option>
+                    <option value="2">2 people</option>
+                    <option value="3">3 people</option>
+                    <option value="4">4 people</option>
+                    <option value="5">5+ people</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div>
+                <label for="date"><i class="icon">📅</i> Date</label>
+                <input type="date" id="date" name="date" required>
+            </div>
+            <div>
+                <label for="time"><i class="icon">🕒</i> Time</label>
+                <select id="time" name="time" required>
+                    <option value="7:00 AM">7:00 AM</option>
+                    <option value="7:30 AM">7:30 AM</option>
+                    <option value="8:00 AM">8:00 AM</option>
+                    <option value="8:30 AM">8:30 AM</option>
+                    <option value="9:00 AM">9:00 AM</option>
+                    <option value="9:30 AM">9:30 AM</option>
+                    <option value="10:00 AM">10:00 AM</option>
+                    <option value="10:30 AM">10:30 AM</option>
+                    <option value="11:00 AM">11:00 AM</option>
+                    <option value="11:30 AM">11:30 AM</option>
+                    <option value="12:00 PM">12:00 PM</option>
+                    <option value="12:30 PM">12:30 PM</option>
+                    <option value="1:00 PM">1:00 PM</option>
+                    <option value="1:30 PM">1:30 PM</option>
+                    <option value="2:00 PM">2:00 PM</option>
+                    <option value="2:30 PM">2:30 PM</option>
+                    <option value="3:00 PM">3:00 PM</option>
+                    <option value="3:30 PM">3:30 PM</option>
+                    <option value="4:00 PM">4:00 PM</option>
+                    <option value="4:30 PM">4:30 PM</option>
+                    <option value="5:00 PM">5:00 PM</option>
+                    <option value="5:30 PM">5:30 PM</option>
+                    <option value="6:00 PM">6:00 PM</option>
+                    <option value="6:30 PM">6:30 PM</option>
+                    <option value="7:00 PM">7:00 PM</option>
+                    <option value="7:30 PM">7:30 PM</option>
+                    <option value="8:00 PM">8:00 PM</option>
+                    <option value="8:30 PM">8:30 PM</option>
+                    <option value="9:00 PM">9:00 PM</option>
+                    <option value="9:30 PM">9:30 PM</option>
+                    <option value="10:00 PM">10:00 PM</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="special_requests">Special Requests (Optional)</label>
+            <textarea id="special_requests" name="special_requests" placeholder="Any special requests?"></textarea>
+        </div>
+        <div class="book-button-container">
+            <button type="submit" class="book-button">BOOK TABLE</button>
+        </div>
+    </form>
+
+    <!-- Include Footer -->
+<%- include('includes/footer') %>
+
+
+</body>
+</html>

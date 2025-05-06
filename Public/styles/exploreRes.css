@@ -139,7 +139,7 @@ h1 {
 .dine-in-button {
     justify-content: center;
     align-items: center;
-    background-color: #ff9800;
+    background-color: #f0a029;
     color: #222;
     border: none;
     padding: 15px 30px;
@@ -258,8 +258,7 @@ h1 {
 
 /* Media Queries for Responsiveness */
 
-/* For screens less than 1200px (medium devices) */
-@media screen and (max-width: 1200px) {
+/* For screens less than 1200px (medium devices) {
     .navbar-container {
         flex-direction: column;
         align-items: center;
@@ -326,4 +325,25 @@ h1 {
     .footer-container {
         padding: 20px;
     }
+}
+
+/* Styling for Reserve Now button */
+.reserve-btn {
+    display: inline-block;
+    background-color: #ff9800;
+    color: #fff;
+    padding: 12px 25px;
+    font-size: 1em;
+    font-weight: 600;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(255, 152, 0, 0.4);
+}
+
+.reserve-btn:hover {
+    background-color: #e68a00;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(230, 138, 0, 0.6);
 }

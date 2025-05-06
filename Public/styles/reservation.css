@@ -1,0 +1,341 @@
+html{
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    background-color: hsla(30, 8%, 5%, 1);
+    font-family: Jost, sans-serif;
+    
+  }
+  
+  .navbar {
+    background-color: hsla(30, 8%, 5%, 1);
+    padding: 10px 20px;
+    height: 5rem;
+  }
+  
+  .navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .navbar-left {
+    display: flex;
+    align-items: center;
+  }
+  
+  .navbar-left ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .nav-item {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    transition: background-color 0.3s;
+  }
+  
+  .nav-item:hover {
+    background-color: #76b8cc;
+  }
+  
+  .navbar-right {
+    display: flex;
+    align-items: center;
+  }
+  
+  .login-signup-box {
+    background-color: #254661;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .login-signup-box .nav-item {
+    color: white;
+    padding: 0 10px;
+  }
+  
+  .login-signup-box span {
+    color: white;
+    padding: 0 5px;
+  }
+  
+  .reservation-form {
+    margin-top: 7%;
+    margin-bottom: 7%;
+    margin-right: 25%;
+    margin-left: 25%;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 600px;
+  }
+  
+  .form-header {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .form-header p {
+    color: #e67e22;
+    font-size: 0.9em;
+    margin-top: 5px;
+  }
+  
+  .form-group {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+  }
+  
+  .form-group > div {
+    flex: 1;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+    font-size: 0.9em;
+  }
+  
+  .form-group input[type="text"],
+  .form-group input[type="email"],
+  .form-group input[type="tel"],
+  .form-group input[type="date"],
+  .form-group select {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1em;
+  }
+  
+  .form-group select {
+    appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position-x: 95%;
+    background-position-y: center;
+    background-size: 16px;
+  }
+  
+  .form-group textarea {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1em;
+    resize: vertical;
+    min-height: 80px;
+  }
+  
+  .book-button-container {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .book-button {
+    background-color: #e67e22;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 6px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .book-button:hover {
+    background-color: #d35400;
+  }
+  
+  .icon {
+    margin-right: 5px;
+    color: #777;
+  }
+  
+  /* Footer Styles */
+  .footer {
+    background-color: #000;
+    color: #fff;
+    padding: 50px 0;
+  }
+  
+  .footer-container {
+    display: flex;
+    justify-content: space-around;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .footer-left,
+  .footer-links,
+  .footer-menu,
+  .footer-newsletter {
+    flex: 1;
+    padding: 0 20px;
+  }
+  
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .footer-logo img {
+    width: 40px;
+    margin-right: 10px;
+  }
+  
+  .footer-logo span {
+    font-size: 1.5em;
+    font-weight: bold;
+  }
+  
+  .footer-address,
+  .footer-social {
+    margin-bottom: 20px;
+  }
+  
+  .footer-social img {
+    width: 30px;
+    margin-right: 10px;
+    background-color: #fff;
+    border-radius: 20%;
+    padding: 5px;
+  }
+  
+  .footer-links h3,
+  .footer-menu h3,
+  .footer-newsletter h3 {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+  }
+  
+  .footer-links ul,
+  .footer-menu ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer-links li,
+  .footer-menu li {
+    margin-bottom: 10px;
+  }
+  
+  .footer-links a,
+  .footer-menu a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .footer-newsletter p {
+    margin-bottom: 20px;
+  }
+  
+  .newsletter-form {
+    display: flex;
+  }
+  
+  .newsletter-form input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #333;
+    background-color: #111;
+    color: #fff;
+  }
+  
+  .newsletter-form button {
+    background-color: #f00;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  .newsletter-form button img {
+    width: 20px;
+  }
+  
+  /* Media Queries for Responsiveness */
+  
+  /* For screens less than 1200px (medium devices) */
+  @media screen and (max-width: 1200px) {
+    .navbar-container {
+        flex-direction: column;
+        align-items: center;
+    }
+  
+    .navbar-left ul {
+        flex-direction: column;
+        align-items: center;
+    }
+  
+    .story-container {
+        flex-direction: column;
+        align-items: center;
+    }
+  
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+    }
+  }
+  
+  /* For screens less than 768px (small devices) */
+  @media screen and (max-width: 768px) {
+    .navbar-container {
+        padding: 10px;
+    }
+  
+    .steps-container {
+        flex-direction: column;
+    }
+  
+    .step {
+        width: 80%;
+        margin: 10px 0;
+    }
+  
+    .footer-container {
+        padding: 10px;
+    }
+  
+    .banner-text {
+        font-size: 1em;
+    }
+  
+    .banner-title {
+        font-size: 2em;
+    }
+  
+    .banner-button {
+        font-size: 1em;
+    }
+  }
+  
+  /* For screens less than 480px (extra small devices) */
+  @media screen and (max-width: 480px) {
+    .navbar-container {
+        padding: 5px;
+    }
+  
+    .steps-title h2 {
+        font-size: 2em;
+    }
+  
+    .footer-container {
+        padding: 20px;
+    }
+  }
