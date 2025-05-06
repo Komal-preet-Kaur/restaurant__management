@@ -2,6 +2,7 @@ const express = require('express')
 const path = require('path')
 const fs = require('fs')
 const router = express.Router()
+const Reservation = require('../models/reservation')
 
 router.get('/', (req, res) => {
   res.render('home', {
@@ -29,10 +30,9 @@ router.get('/', (req, res) => {
   })
 })
 
-
 // Sign-in route (GET)
 router.get('/signin', (req, res) => {
-  res.render('sign-in',) 
+  res.render('sign-in') 
 })
 
 // About us route
@@ -117,8 +117,7 @@ router.post('/signup', (req, res, next) => {
       res.redirect('/signin');
     });
   });
-});
-
+})
 
 // Index route
 router.get('/index', (req, res) => {
@@ -144,7 +143,38 @@ router.get('/index', (req, res) => {
       }
     ],
     showAuthLinks : false,
-  },)
+  })
 })
+
+// Reservation page route (GET)
+router.get('/reserve/:restaurantId', (req, res) => {
+  const restaurantId = req.params.restaurantId;
+  res.render('reservation', { restaurantId });
+});
+
+// Reservation form submission (POST)
+router.post('/reserve/:restaurantId', async (req, res) => {
+  const { restaurantId } = req.params;
+  const { name, email, phone, date, time, guests, special_requests } = req.body;
+
+  try {
+    const newReservation = new Reservation({
+      restaurantId,
+      name,
+      email,
+      phone,
+      date,
+      time,
+      guests,
+      special_requests
+    });
+
+    await newReservation.save();
+    res.send(`<h2>Thank you, your reservation is confirmed!</h2><a href="/">Back to Home</a>`);
+  } catch (error) {
+    console.error('Reservation error:', error);
+    res.status(500).send('Failed to reserve. Please try again.');
+  }
+});
 
 module.exports = router

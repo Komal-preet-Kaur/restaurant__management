@@ -7,74 +7,91 @@
     <link rel="stylesheet" href="/styles/exploreRes.css">
 </head>
 <body>
-  
-    
-    <!-- Include Navbar -->
-<%- include('includes/navbar') %>
- <hr />
 
-    <div class="container-res">
-        <h1>Different Restaurants</h1>
-        <div class="restaurant-grid">
-            <div class="restaurant-card">
-                <img src="/images/new-res.avif" alt="Urban Cafe" loading="lazy">
-                <div class="restaurant-details">
-                    <h3>Urban Cafe</h3>
-                    <p>Address: Hyatt Regency, Sector 35, Chandigarh</p>
-                    <p>Cuisine: Chinese, Indian</p>
-                </div>
-            </div>
-            <div class="restaurant-card">
-                <img src="/images/location2.jpeg" alt="Piccante" loading="lazy">
-                <div class="restaurant-details">
-                    <h3>Piccante</h3>
-                    <p>Address: Sector 26, Chandigarh</p>
-                    <p>Cuisine: Italian, Chinese</p>
-                </div>
-            </div>
-            <div class="restaurant-card">
-                <img src="/images/location3.jpeg" alt="The Cafe @ JW">
-                <div class="restaurant-details">
-                    <h3>The Cafe @ JW</h3>
-                    <p>Address: JW Marriott Hotel, Sector 35, Chandigarh</p>
-                    <p>Cuisine: Indian, Cafe, International</p>
-                </div>
-            </div>
-            <div class="restaurant-card">
-                <img src="/images/location4.jpeg" alt="Baluchi">
-                <div class="restaurant-details">
-                    <h3>Baluchi</h3>
-                    <p>Address: Sector 26, Chandigarh</p>
-                    <p>Cuisine: Indian, Asian</p>
-                </div>
-            </div>
-            <div class="restaurant-card">
-                <img src="/images/location5.jpeg" alt="Virgin Courtyard">
-                <div class="restaurant-details">
-                    <h3>Virgin Courtyard</h3>
-                    <p>Address: Sector 7, Chandigarh</p>
-                    <p>Cuisine: Italian</p>
-                </div>
-            </div>
-            <div class="restaurant-card">
-                <img src="/images/location6.jpeg" alt="Tamra">
-                <div class="restaurant-details">
-                    <h3>Tamra</h3>
-                    <p>Address: Sector 7, Chandigarh</p>
-                    <p>Cuisine: Multicuisine</p>
-                </div>
+<!-- Include Navbar -->
+<%- include('includes/navbar') %>
+<hr />
+
+<div class="container-res">
+    <h1>Different Restaurants</h1>
+    <div class="restaurant-grid">
+
+        <!-- Restaurant Card - Urban Cafe -->
+        <div class="restaurant-card">
+            <img src="/images/new-res.avif" alt="Urban Cafe" loading="lazy">
+            <div class="restaurant-details">
+                <h3>Urban Cafe</h3>
+                <p>Address: Hyatt Regency, Sector 35, Chandigarh</p>
+                <p>Cuisine: Chinese, Indian</p>
+                <a href="/reserve/urban-cafe" class="reserve-btn">Reserve Now</a>
             </div>
         </div>
-        <div class="dine-in-section">
-            <p>Dine In at your favorite place or book a table</p>
-            <button class="dine-in-button">DINE IN</button>
+
+        <!-- Restaurant Card - Piccante -->
+        <div class="restaurant-card">
+            <img src="/images/location2.jpeg" alt="Piccante" loading="lazy">
+            <div class="restaurant-details">
+                <h3>Piccante</h3>
+                <p>Address: Sector 26, Chandigarh</p>
+                <p>Cuisine: Italian, Chinese</p>
+                <a href="/reserve/piccante" class="reserve-btn">Reserve Now</a>
+            </div>
         </div>
+
+        <!-- Restaurant Card - The Cafe @ JW -->
+        <div class="restaurant-card">
+            <img src="/images/location3.jpeg" alt="The Cafe @ JW">
+            <div class="restaurant-details">
+                <h3>The Cafe @ JW</h3>
+                <p>Address: JW Marriott Hotel, Sector 35, Chandigarh</p>
+                <p>Cuisine: Indian, Cafe, International</p>
+                <a href="/reserve/the-cafe-jw" class="reserve-btn">Reserve Now</a>
+            </div>
+        </div>
+
+        <!-- Restaurant Card - Baluchi -->
+        <div class="restaurant-card">
+            <img src="/images/location4.jpeg" alt="Baluchi">
+            <div class="restaurant-details">
+                <h3>Baluchi</h3>
+                <p>Address: Sector 26, Chandigarh</p>
+                <p>Cuisine: Indian, Asian</p>
+                <a href="/reserve/baluchi" class="reserve-btn">Reserve Now</a>
+            </div>
+        </div>
+
+        <!-- Restaurant Card - Virgin Courtyard -->
+        <div class="restaurant-card">
+            <img src="/images/location5.jpeg" alt="Virgin Courtyard">
+            <div class="restaurant-details">
+                <h3>Virgin Courtyard</h3>
+                <p>Address: Sector 7, Chandigarh</p>
+                <p>Cuisine: Italian</p>
+                <a href="/reserve/virgin-courtyard" class="reserve-btn">Reserve Now</a>
+            </div>
+        </div>
+
+        <!-- Restaurant Card - Tamra -->
+        <div class="restaurant-card">
+            <img src="/images/location6.jpeg" alt="Tamra">
+            <div class="restaurant-details">
+                <h3>Tamra</h3>
+                <p>Address: Sector 7, Chandigarh</p>
+                <p>Cuisine: Multicuisine</p>
+                <a href="/reserve/tamra" class="reserve-btn">Reserve Now</a>
+            </div>
+        </div>
+
     </div>
 
-   
+    <div class="dine-in-section">
+        <p>Dine In at your favorite place or book a table</p>
+        <a href="#" class="dine-in-button">DINE IN</a>
+    </div>
+</div>
+
 <!-- Include Footer -->
 <%- include('includes/footer') %>
-
 
 </body>
 </html>
