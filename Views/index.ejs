@@ -66,15 +66,15 @@
 
       <ul class="grid-list">
         <% const services = [
-            { title: 'Breakfast', img: 'service-1.jpg' },
-            { title: 'Appetizers', img: 'service-2.jpg' },
-            { title: 'Beverages', img: 'service-3.jpg' }
+            { title: 'Breakfast', img: 'service-1.jpg', link: '/breakfast' },
+            { title: 'Appetizers', img: 'service-2.jpg', link: '/appetiser' },
+            { title: 'Beverages', img: 'service-3.jpg', link: '/beverage' }
         ]; %>
 
         <% services.forEach(service => { %>
           <li>
             <div class="service-card">
-              <a href="#" class="has-before hover:shine">
+              <a href="<%= service.link %>" class="has-before hover:shine">
                 <figure class="card-banner img-holder" style="--width: 285; --height: 336;">
                   <img src="/images/<%= service.img %>" width="285" height="336" loading="lazy" alt="<%= service.title %>" class="img-cover" />
                 </figure>
@@ -124,11 +124,8 @@
     </div>
   </div>
 
-
-<!-- Include Footer -->
-<%- include('includes/footer') %>
-
-
+  <!-- Include Footer -->
+  <%- include('includes/footer') %>
 
   <script src="/js/script.js"></script>
 </body>

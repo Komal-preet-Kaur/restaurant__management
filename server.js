@@ -26,6 +26,23 @@ app.use(cookieParser())
 
 app.use(express.static(path.join(__dirname, 'public')))
 
+// Define the routes
+app.get('/', (req, res) => {
+  res.render('index', { showAuthLinks: true }) // Pass the showAuthLinks variable to index.ejs
+})
+
+app.get('/breakfast', (req, res) => {
+  res.render('breakfast', { showAuthLinks: true }) // Pass showAuthLinks to breakfast.ejs
+})
+
+app.get('/appetiser', (req, res) => {
+  res.render('appetiser', { showAuthLinks: true }) // Pass showAuthLinks to appetiser.ejs
+})
+
+app.get('/beverage', (req, res) => {
+  res.render('beverage', { showAuthLinks: true }) // Pass showAuthLinks to beverage.ejs
+})
+
 // API Routes
 const apiRoutes = require('./api/apiRoutes')
 app.use('/', apiRoutes)
