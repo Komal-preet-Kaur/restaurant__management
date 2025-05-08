@@ -10,7 +10,33 @@ body {
     padding: 10px 20px;
     height: 6rem;
 }
+.navbar-right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Align to the right */
+    gap: 20px; /* Add spacing between links */
+    height: 100%; /* Ensure it aligns with the navbar height */
+}
 
+.nav-auth {
+    display: flex; /* Align links horizontally */
+    gap: 20px; /* Add spacing between links */
+    list-style: none; /* Remove default list styling */
+    margin: 0;
+    padding: 0;
+}
+
+.nav-auth .nav-item {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px; /* Add padding for spacing */
+    transition: background-color 0.3s;
+}
+
+.nav-auth .nav-item:hover {
+    background-color: #76b8cc; /* Add hover effect */
+    border-radius: 5px; /* Optional: Add rounded corners on hover */
+}
 .navbar-container {
     display: flex;
     justify-content: space-between;

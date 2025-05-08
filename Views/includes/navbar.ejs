@@ -1,24 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - DineDelight</title>
+    <link rel="stylesheet" href="/styles/navbar.css">
+</head>
+<body>
 <nav class="navbar">
-    <div class="navbar-container">
-      <div class="navbar-logo">
-        <a href="/" class="logo">
-          <img src="/images/dinedelight logo.png" width="145" height="95" alt="dinedelight" />
-        </a>
-      </div>
-      <div class="navbar-left">
-        <ul>
-          <li><a href="/index" class="nav-item">Home</a></li>
-          <li><a href="/explore" class="nav-item">Explore Restaurants</a></li>
-          <li><a href="/contact" class="nav-item">Contact Us</a></li>
-          <li><a href="/about" class="nav-item">About Us</a></li>
-          <li><a href="/booking" class="nav-item">Bookings</a></li>
-
-          <% if (showAuthLinks) { %>
-            <li><a href="/signin " class="nav-item">Sign In</a></li>
-            <li><a href="/signup " class="nav-item">Sign Up</a></li>
-        <% } %>
-        </ul>
-      </div>
+  <div class="navbar-container">
+    <!-- Logo Section -->
+    <div class="navbar-logo">
+      <a href="/" class="logo">
+        <img src="/images/dinedelightlogo.png" width="145" height="95" alt="DineDelight Logo" />
+      </a>
     </div>
-  </nav>
-  
+
+    <!-- Navigation Links -->
+    <div class="navbar-left">
+      <ul class="nav-links">
+        <li><a href="/index" class="nav-item">Home</a></li>
+        <li><a href="/explore" class="nav-item">Explore Restaurants</a></li>
+        <li><a href="/contact" class="nav-item">Contact Us</a></li>
+        <li><a href="/about" class="nav-item">About Us</a></li>
+        <li><a href="/booking" class="nav-item">Bookings</a></li>
+      </ul>
+    </div>
+
+    <div class="navbar-right">
+      <ul class="nav-auth">
+        <% if (username) { %>
+          <li><span class="nav-item">Welcome, <%= username %></span></li>
+          <li><a href="/logout" class="nav-item">Logout</a></li>
+        <% } else { %>
+          <li><a href="/signin" class="nav-item">Sign In</a></li>
+          <li><a href="/signup" class="nav-item">Sign Up</a></li>
+        <% } %>
+      </ul>
+    </div>
+  </div>
+</nav>
+</body>

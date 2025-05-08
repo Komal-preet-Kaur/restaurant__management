@@ -22,6 +22,31 @@ body {
     display: flex;
     align-items: center;
 }
+.navbar-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; /* Align to the right */
+}
+
+.nav-auth {
+  display: flex; /* Align links horizontally */
+  gap: 20px; /* Add spacing between links */
+  list-style: none; /* Remove default list styling */
+  margin: 0;
+  padding: 0;
+}
+
+.nav-auth .nav-item {
+  color: white;
+  text-decoration: none;
+  padding: 10px 15px; /* Add padding for spacing */
+  transition: background-color 0.3s;
+}
+
+.nav-auth .nav-item:hover {
+  background-color: #76b8cc; /* Add hover effect */
+  border-radius: 5px; /* Optional: Add rounded corners on hover */
+}
 
 .navbar-left ul {
     display: flex;
@@ -43,21 +68,31 @@ body {
 }
 
 .navbar-right {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; /* Align to the right */
+  gap: 20px; /* Add spacing between links */
 }
-
 .login-signup-box {
-    background-color: #254661;
-    padding: 10px;
-    border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent; /* Remove background color */
+  padding: 0; /* Remove padding */
+  border-radius: 0; /* Remove border radius */
 }
 
 .login-signup-box .nav-item {
-    color: white;
-    padding: 0 10px;
+  color: white;
+  padding: 10px 15px; /* Add padding for spacing */
+  text-decoration: none;
+  transition: background-color 0.3s;
 }
 
+.login-signup-box .nav-item:hover {
+  background-color: #76b8cc; /* Add hover effect */
+  border-radius: 5px; /* Optional: Add rounded corners on hover */
+}
 .login-signup-box span {
     color: white;
     padding: 0 5px;

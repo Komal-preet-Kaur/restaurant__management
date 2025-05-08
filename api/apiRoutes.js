@@ -1,143 +1,145 @@
-const express = require('express')
-const path = require('path')
-const fs = require('fs')
-const router = express.Router()
-const Reservation = require('../models/reservation')
-const User = require('../models/User')
+const express = require('express');
+const path = require('path');
+const fs = require('fs');
+const router = express.Router();
+const Reservation = require('../models/reservation');
+const User = require('../models/User');
 
+// Shared homepage content
+const homepageContent = {
+  title: 'DineDelight',
+  heading: 'Where every flavor tells a story',
+  subheading: 'Come with family & feel the joy of mouthwatering food',
+  steps: [
+    {
+      title: 'Register',
+      image: '/images/step1image.avif',
+      description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
+    },
+    {
+      title: 'Explore Restaurants',
+      image: '/images/step2image.avif',
+      description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
+    },
+    {
+      title: 'Book Table',
+      image: '/images/step3image.avif',
+      description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
+    }
+  ]
+};
+
+// GET: Home Page
 router.get('/', (req, res) => {
   res.render('home', {
-    title: 'DineDelight',
-    heading: 'Where every flavor tells a story',
-    subheading: 'Come with family & feel the joy of mouthwatering food',
-    steps: [
-      {
-        title: 'Register',
-        image: '/images/step1image.avif',
-        description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
-      },
-      {
-        title: 'Explore Restaurants',
-        image: '/images/step2image.avif',
-        description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
-      },
-      {
-        title: 'Book Table',
-        image: '/images/step3image.avif',
-        description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
-      }
-    ],
-    showAuthLinks : true
-  })
-})
+    ...homepageContent,
+    showAuthLinks: !req.session.user
+  });
+});
 
-// Sign-in route (GET)
-router.get('/signin', (req, res) => {
-  res.render('sign-in') 
-})
-
-// About us route
-router.get('/about', (req, res) => {
-  res.render('aboutus',{
-    showAuthLinks : false
-  })
-})
-
-// Contact us route
-router.get('/contact', (req, res) => {
-  res.render('contactus',{
-    showAuthLinks : false
-  })
-})
-
-// Privacy policy route
-router.get('/privacy', (req, res) => {
-  res.render('privacypolicy',{
-    showAuthLinks : false
-  })
-})
-
-// Explore route
-router.get('/explore', (req, res) => {
-  res.render('exploreRest',{
-    showAuthLinks : false
-  }) // Make sure 'exploreRest.ejs' exists
-})
-
-// Sign-in route (POST)
-router.post('/signin', async (req, res, next) => {
-  try {
-    const { username, password } = req.body
-    const user = await User.findOne({ username })
-    if (!user) {
-      return res.status(302).redirect('/signup')
-    }
-    const isMatch = await user.comparePassword(password)
-    if (isMatch) {
-      return res.status(302).redirect('/index')
-    } else {
-      return res.status(302).redirect('/signin')
-    }
-  } catch (err) {
-    next(err)
-  }
-})
-
-// Sign-up route (GET)
-router.get('/signup', (req, res) => {
-  res.render('signup') 
-})
-
-// Sign-up route (POST)
-router.post('/signup', async (req, res, next) => {
-  try {
-    const { username, password } = req.body
-    const existingUser = await User.findOne({ username })
-    if (existingUser) {
-      // User already exists, redirect to signup with error or handle accordingly
-      return res.status(302).redirect('/signup')
-    }
-    const newUser = new User({ username, password })
-    await newUser.save()
-    res.redirect('/signin')
-  } catch (err) {
-    next(err)
-  }
-})
-// Index route
+// GET: Index (After login)
 router.get('/index', (req, res) => {
   res.render('index', {
-    title: 'DineDelight',
-    heading: 'Where every flavor tells a story',
-    subheading: 'Come with family & feel the joy of mouthwatering food',
-    steps: [
-      {
-        title: 'Register',
-        image: '/images/step1image.avif',
-        description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
-      },
-      {
-        title: 'Explore Restaurants',
-        image: '/images/step2image.avif',
-        description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
-      },
-      {
-        title: 'Book Table',
-        image: '/images/step3image.avif',
-        description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
-      }
-    ],
-    showAuthLinks : false,
-  })
-})
+    ...homepageContent,
+    showAuthLinks: false
+  });
+});
 
-// Reservation page route (GET)
+// GET: Sign-in
+router.get('/signin', (req, res) => {
+  res.render('sign-in');
+});
+
+// POST: Sign-in
+router.post('/signin', async (req, res, next) => {
+  try {
+    const { username, password } = req.body;
+    const user = await User.findOne({ username });
+
+    if (!user) {
+      return res.status(302).redirect('/signup');
+    }
+
+    const isMatch = await user.comparePassword(password);
+    if (isMatch) {
+      req.session.user = { username: user.username };
+      return res.status(302).redirect('/index');
+    } else {
+      return res.status(302).redirect('/signin');
+    }
+  } catch (err) {
+    next(err);
+  }
+});
+
+// GET: Logout
+router.get('/logout', (req, res) => {
+  req.session.destroy((err) => {
+    if (err) {
+      console.error('Error destroying session:', err);
+    }
+    res.redirect('/signin');
+  });
+});
+
+// GET: Sign-up
+router.get('/signup', (req, res) => {
+  res.render('signup');
+});
+
+// POST: Sign-up
+router.post('/signup', async (req, res, next) => {
+  try {
+    const { username, password } = req.body;
+    const existingUser = await User.findOne({ username });
+
+    if (existingUser) {
+      return res.status(302).redirect('/signup');
+    }
+
+    const newUser = new User({ username, password });
+    await newUser.save();
+    res.redirect('/signin');
+  } catch (err) {
+    next(err);
+  }
+});
+
+// GET: About Us
+router.get('/about', (req, res) => {
+  res.render('aboutus', {
+    showAuthLinks: false
+  });
+});
+
+// GET: Contact Us
+router.get('/contact', (req, res) => {
+  res.render('contactus', {
+    showAuthLinks: false
+  });
+});
+
+// GET: Privacy Policy
+router.get('/privacy', (req, res) => {
+  res.render('privacypolicy', {
+    showAuthLinks: false
+  });
+});
+
+// GET: Explore Restaurants
+router.get('/explore', (req, res) => {
+  res.render('exploreRest', {
+    showAuthLinks: false
+  });
+});
+
+// GET: Reservation page
 router.get('/reserve/:restaurantId', (req, res) => {
   const restaurantId = req.params.restaurantId;
   res.render('reservation', { restaurantId });
 });
 
-// Reservation form submission (POST)
+// POST: Reservation form submission
 router.post('/reserve/:restaurantId', async (req, res) => {
   const { restaurantId } = req.params;
   const { name, email, phone, date, time, guests, special_requests } = req.body;
@@ -161,9 +163,8 @@ router.post('/reserve/:restaurantId', async (req, res) => {
     res.status(500).send('Failed to reserve. Please try again.');
   }
 });
-// Add this above module.exports
 
-// Hardcoded restaurant data for search API
+// Hardcoded restaurant data for search
 const restaurants = [
   {
     id: 1,
@@ -215,18 +216,20 @@ const restaurants = [
   }
 ];
 
-// API route for restaurant search
+// API: Search restaurants
 router.get('/api/restaurants/search', (req, res) => {
   const query = req.query.query ? req.query.query.toLowerCase() : '';
   if (!query) {
     return res.json({ results: [] });
   }
+
   const results = restaurants.filter(r =>
     r.name.toLowerCase().includes(query) ||
     r.address.toLowerCase().includes(query) ||
     r.cuisine.toLowerCase().includes(query)
   );
+
   res.json({ results });
 });
 
-module.exports = router
+module.exports = router;

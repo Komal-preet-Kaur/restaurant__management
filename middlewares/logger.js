@@ -1,10 +1,11 @@
-// Logger Middleware to log details of each request
 const logger = (req, res, next) => {
-    const method = req.method // Get the HTTP method (GET, POST, etc.)
-    const url = req.url // Get the requested URL
-    const timestamp = new Date().toISOString() // Get the timestamp for the request
-    // Log the details in the console
-    console.log(`[${timestamp}] ${method} ${url}`)
-    next() // Call next middleware or route handler
-}
-module.exports = logger
+    const method = req.method;
+    const url = req.originalUrl; // more accurate than req.url for middlewares
+    const timestamp = new Date().toISOString();
+    const username = req.session?.user?.username || 'Guest';
+    console.log(`[${timestamp}] ${method} ${url} - User: ${username}`);
+    next();
+  };
+  
+  module.exports = logger;
+  
