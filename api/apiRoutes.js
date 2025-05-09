@@ -157,7 +157,7 @@ router.post('/reserve/:restaurantId', async (req, res) => {
     });
 
     await newReservation.save();
-    res.send(`<h2>Thank you, your reservation is confirmed!</h2><a href="/">Back to Home</a>`);
+    res.render('thankyou');
   } catch (error) {
     console.error('Reservation error:', error);
     res.status(500).send('Failed to reserve. Please try again.');

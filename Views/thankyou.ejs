@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Reservation Confirmed - Thank You</title>
+    <link rel="stylesheet" href="/styles/index.css" />
+    <link rel="stylesheet" href="/styles/reservation.css" />
+    <style>
+        h1,
+        p {
+            color: antiquewhite;
+        }
+
+        .btn-home {
+            display: inline-block;
+            background-color: #ff9800;
+            color: #fff;
+            padding: 12px 25px;
+            font-size: 1em;
+            font-weight: 600;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(255, 152, 0, 0.4);
+        }
+
+        .btn-home:hover {
+            background-color: #e68a00;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(230, 138, 0, 0.6);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Include Navbar -->
+    <%- include('includes/navbar', { showAuthLinks: false }) %>
+
+        <main class="thankyou-container">
+            <h1>Thank You for Your Reservation!</h1>
+            <p>Your table has been successfully booked. We look forward to serving you.</p>
+            <a href="/" class="btn-home">Back to Home</a>
+        </main>
+
+        <!-- Include Footer -->
+        <%- include('includes/footer') %>
+</body>
+
+</html>
